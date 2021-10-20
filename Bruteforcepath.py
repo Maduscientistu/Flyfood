@@ -22,10 +22,10 @@ def permutac(lst):
   if len(lst) == 1:
     return [lst]
   for a in range(len(lst)):
-    tmp = lst[a]
-    remain = lst[:a] + lst[a+1:]
-    for ele in permutac(remain):
-      l.append([tmp] + ele)
+    pos_a = lst[a]
+    sobras = lst[:a] + lst[a+1:]
+    for ele in permutac(sobras):
+      l.append([pos_a] + ele)
   return l
 
 
