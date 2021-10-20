@@ -3,17 +3,6 @@ import time
 from matplotlib import pyplot
 
 inicio = time.process_time()
-def permutar(S,D):
-  novoD = []
-  novoS = []
-  if 0 == D:
-      
-      print(novoS)
-  for element in D:
-      novoS.append(element)
-      novoD.append(element)
-      print(novoD)
-      permutar(novoS,novoD)
 
 def permutac(lst):
   l = []
