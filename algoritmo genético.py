@@ -81,10 +81,12 @@ class roteiro:
 points = [[0,1,0,3],[0,0,2,0],[0,4,0,0],[0,5,0,0],[0,11,0,10],[0,0,9,0],[0,8,0,0],[0,6,0,7]]
 lista_pos = []
 inicio = time.process_time()
-n, m = input().split()
+#Recebe por entrada um valor m que representa a quantidade de pontos da entrada
+m = input()
 e = 0
 while e < int(m):
   e += 1
+#Recebe por entrada o ponto de entrega e suas respectivas posições nos eixos x e y do plano cartesiano.
   a, b, c = input().split()
   l = [int(a),(float(b),float(c))]
   lista_pos.append(l)
@@ -107,21 +109,23 @@ for lista in l:
 #print(lista_pos)
 lista_pop = [roteiro(lista_pos)]
 
-#gera população
-for i in range(100):
+#gera população e a quantidade de individuos é definida aqui
+individuos = 100
+for i in range(generations):
     for e in range(int(len(lista_pos)/2)):
         l = mutacao(lista_pos)
     lista_pop.append(roteiro(l[:]))
     
 #gerações
     gg = 0
-for i in range(10000):
+#O número de gerações a serem rodadas é informado no range.
+for i in range(1000):
     somatorio = 0
     menor_dist = 1000000000000
     maior_dist = 0
     lista_filhos =[]
     gg += 1
-    
+    #Geração de plot gradual aqui. Cada novo or seguido de certa posição gg no número de gerações é um novo plot do melhor individuo atual.
     if gg == 100 or gg == 500:
         menor_distancia = 10000000000
         melhor_rota = []
@@ -162,7 +166,8 @@ for i in range(10000):
         objeto.aptidao = calc_aptidao(dist_norm)
         #print(objeto.aptidao)
         somatorio += objeto.aptidao
-    for e in range(50):
+    #Geração de nova população
+    for e in range(int(individuos/2)):
         pai1 = torneio(lista_pop)
         pai2 = torneio(lista_pop)
         na = random.randint(0,99)
